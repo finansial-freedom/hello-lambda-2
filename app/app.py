@@ -11,7 +11,7 @@ def handler(event, context):
     response = client_secretsmanager.get_secret_value(
         SecretId=secretname
     )
-    print(json.loads(response))
+    print(response)
     return {
         "statusCode": 200,
         "headers": {"Content-Type": "application/json"},

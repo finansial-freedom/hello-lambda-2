@@ -2,7 +2,7 @@ name: Deploy PROD
 
 on:
   push:
-    branches: [mian]
+    branches: [main]
   workflow_dispatch:
 
 concurrency:

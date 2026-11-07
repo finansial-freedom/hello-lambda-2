@@ -1,0 +1,33 @@
+name: Test Self-Hosted Runner
+
+on:
+  worflow_dispatch:
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+    steps:
+      - name: Runner info
+        run: |
+          echo "Hostname : $(hostname)"
+          echo "User     : $(whoami)"
+          echo "OS       : $(. /etc/os-release && echo $PRETTY_NAME)"
+          echo "Arch     : $(uname -m)"
+          df -h /
+
+      - name: Check Docker (without sudo)
+        run: |
+          docker version
+          docker run --rm hello-world
+
+      - name: Check Docker buildx
+        run: docker buildx version
+
+      - name: Check Python
+        run: python3 --version
+
+      - name: Check AWS CLI
+        run: aws --version
+
+      - name: Check AWS identity (LabRole)
+        run: aws sts get-caller-identity

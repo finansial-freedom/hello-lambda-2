@@ -16,7 +16,7 @@ jobs:
     env:
       AWS_REGION: us-west-2
       ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}
-      FUNCTION_NAME: ${{ vars.LAMBDA_FUNCTION }}
+      FUNCTION_NAME: ${{ vars.LAMBDA_FUNCTION_NAME }}
     steps:
       - uses: actions/checkout@v4
 
@@ -41,7 +41,7 @@ jobs:
         id: image
         run: |
           IMAGE_URI="${{ steps.ecr.outputs.registry }}/$ECR_REPOSITORY:prod-${GITHUB_SHA::7}"
-          docker build -t "$IMAGE_URI" app/
+          docker buildx build --platform linux/amd64 --provenance=false -t "$IMAGE_URI" app/
           docker push "$IMAGE_URI"
           echo "uri=$IMAGE_URI" >> "$GITHUB_OUTPUT"
 

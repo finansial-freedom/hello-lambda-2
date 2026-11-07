@@ -21,8 +21,8 @@ def handler(event, context):
         "headers": {"Content-Type": "application/json"},
         "body": json.dumps({
             "message_lambda": "Hello World from Ivan!",
-            "message": "message",
-            "owner": "owner",
-            "env": "env",
+            "message": message,
+            "owner": owner,
+            "env": env,
         }),
     }

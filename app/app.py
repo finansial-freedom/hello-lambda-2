@@ -12,7 +12,7 @@ def handler(event, context):
         SecretId=secretname
     )
     print(response)
-    secret = json.dumps(response['SecretString'])
+    secret = json.loads(response['SecretString'])
     message = secret['message']
     owner = secret['owner']
     env = secret['env']

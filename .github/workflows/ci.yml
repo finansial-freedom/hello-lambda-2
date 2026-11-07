@@ -30,4 +30,4 @@ jobs:
 
       - name: Test Lambda handler imports - hello-lambda
         run: |
-          docker run --rm devops/hello-lambda:test \
+          docker run --rm --entrypoint python devops/hello-lambda:test python -c "import app; print('hello-lambda handler OK')"

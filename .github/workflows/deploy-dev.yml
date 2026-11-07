@@ -40,7 +40,7 @@ jobs:
         id: image
         run: |
           IMAGE_URI="${{ steps.ecr.outputs.registry }}/$ECR_REPOSITORY:dev-${GITHUB_SHA::7}"
-          docker build -t "$IMAGE_URI" app/
+          docker buildx build --platform linux/amd64 --provenance=false -t "$IMAGE_URI" app/
           docker push "$IMAGE_URI"
           echo "uri=$IMAGE_URI" >> "$GITHUB_OUTPUT"
 

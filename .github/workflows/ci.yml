@@ -26,7 +26,7 @@ jobs:
         run: flake8 app/app.py --max-line-length=120 --ignore=E501,W503
 
       - name: Build Docker image - hello-lambda
-        run: docker buildx build --platform linux/amd64 --provenance=false -t devops/hello-lambda:test .
+        run: docker buildx build --platform linux/amd64 --provenance=false -t devops/hello-lambda:test app/
 
       - name: Test Lambda handler imports - hello-lambda
         run: |

@@ -8,7 +8,7 @@ client_secretsmanager = boto3.client('secretsmanager')
 
 def handler(event, context):
     print(json.dumps(event))
-    response = client.get_secret_value(
+    response = client_secretsmanager.get_secret_value(
         SecretId=secretname
     )
     print(json.loads(response))

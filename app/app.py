@@ -1,8 +1,16 @@
 import json
+import boto3
+
+secretname = os.environ.get('SECRET_NAME')
+client_secretsmanager = boto3.client('secretsmanager')
 
 
 def handler(event, context):
-
+    print(json.dumps(event))
+    response = client.get_secret_value(
+        SecretId=secretname
+    )
+    print(json.loads(response))
     return {
         "statusCode": 200,
         "headers": {"Content-Type": "application/json"},

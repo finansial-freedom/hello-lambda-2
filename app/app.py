@@ -1,5 +1,6 @@
 import json
 import boto3
+import os
 
 secretname = os.environ.get('SECRET_NAME')
 client_secretsmanager = boto3.client('secretsmanager')

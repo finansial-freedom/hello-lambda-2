@@ -1,7 +1,7 @@
 name: Test Self-Hosted Runner
 
 on:
-  worflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   test-runner:
